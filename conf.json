@@ -1,0 +1,9 @@
+{
+    "port":"8088",
+    "pages":"./pages",
+    "userdb":"./dbs/user.db",
+    "torrentdb":"./dbs/torrent.db",
+    "commentdb":"./dbs/comments.db",
+    "logdb":"./dbs/log.db",
+    "announcementsdb":"./dbs/announcements.db"
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #4c566a;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        a {
+            color: #5e81ac;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navbar style */
+        .navbar {
+            background-color: #4c566a;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 40px;
+            /* Logo size */
+        }
+
+        .navbar a {
+            color: #e5e9f0;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search bar styles */
+        #input,
+        #input-button,
+        #cata {
+            border-radius: 10px;
+            height: 40px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            /* Space between links and search bar */
+        }
+
+        #input {
+            width: 300px;
+            /* Width of the search input */
+        }
+
+        #input-button {
+            background-color: #5e81ac;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 80px;
+            /* Button width */
+        }
+
+        #input-button:hover {
+            background-color: #81a1c1;
+        }
+
+        /* Categories style */
+        .categories-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 40px;
+        }
+
+        .category {
+            flex: 1 1 30%;
+            /* Adjust the width of each category */
+            margin: 10px;
+            padding: 10px;
+            background-color: #ffffff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .subcategory {
+            margin-left: 20px;
+            /* Indent subcategories */
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="img"><img src="/favicon.png" id="TPBlogo" alt="The Pirate Bay"></a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About/Privacy Policy</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/catagories">Catagories</a>
+            <a href="/upload">Upload torrent</a>
+            <a href="/search">Search</a>
+            <a href="/announcements">Announcements</a>
+        </nav>
+        <form action="/search" method="get" id="search-form" style="display: flex; align-items: center;">
+            <input type="search" placeholder="Search Torrents" id="input" name="q" aria-label="Search Torrents" required>
+            <select id="cata" name="cat">
+                <option value="" disabled selected>Catagories</option>
+                <option value="100">Audio</option>
+                <option value="101">Music</option>
+                <option value="102">Audio Books</option>
+                <option value="103">Sound Clips</option>
+                <option value="104">FLAC</option>
+                <option value="105">Other Audio</option>
+
+                <option value="200">Video</option>
+                <option value="201">Movies</option>
+                <option value="202">Movies DVDR</option>
+                <option value="203">Music Videos</option>
+                <option value="204">Movie Clips</option>
+                <option value="205">TV Shows</option>
+                <option value="206">Handheld</option>
+                <option value="207">HD - Movies</option>
+                <option value="208">HD - TV Shows</option>
+                <option value="209">3D</option>
+                <option value="210">UHD/4K - Movies</option>
+                <option value="211">UHD/4K - TV Shows</option>
+                <option value="212">Other Video</option>
+
+                <option value="300">Applications</option>
+                <option value="301">Windows</option>
+                <option value="302">Mac</option>
+                <option value="303">Linux/UNIX</option>
+                <option value="304">Handheld</option>
+                <option value="305">iOS (iPad/iPhone)</option>
+                <option value="306">Android</option>
+                <option value="307">Other OS</option>
+
+                <option value="400">Games</option>
+                <option value="401">PC</option>
+                <option value="402">Mac</option>
+                <option value="403">PSx</option>
+                <option value="404">XBOX360</option>
+                <option value="405">Wii</option>
+                <option value="406">Handheld</option>
+                <option value="407">iOS (iPad/iPhone)</option>
+                <option value="408">Android</option>
+                <option value="409">Other Games</option>
+
+                <option value="500">Other</option>
+                <option value="501">E-books</option>
+                <option value="502">Comics</option>
+                <option value="503">Pictures</option>
+                <option value="504">Covers</option>
+                <option value="505">Other</option>
+            </select>
+            <button type="submit" id="input-button">Search!</button>
+        </form>
+    </header>
+
+    <main>
+        <h1 style="font-size: 50px;">Categories</h1>
+        <hr>
+        <div class="categories-container">
+            <div class="category"><a href="/search?cat=100">Audio</a>
+                <div class="subcategory"><a href="/search?cat=101">Music</a></div>
+                <div class="subcategory"><a href="/search?cat=102">Audio Books</a></div>
+                <div class="subcategory"><a href="/search?cat=103">Sound Clips</a></div>
+                <div class="subcategory"><a href="/search?cat=104">FLAC</a></div>
+                <div class="subcategory"><a href="/search?cat=105">Other</a></div>
+            </div>
+            <div class="category"><a href="/search?cat=200">Video</a>
+                <div class="subcategory"><a href="/search?cat=201">Movies</a></div>
+                <div class="subcategory"><a href="/search?cat=202">Movies DVDR</a></div>
+                <div class="subcategory"><a href="/search?cat=203">Music Videos</a></div>
+                <div class="subcategory"><a href="/search?cat=204">Movie Clips</a></div>
+                <div class="subcategory"><a href="/search?cat=205">TV Shows</a></div>
+                <div class="subcategory"><a href="/search?cat=206">Handheld</a></div>
+                <div class="subcategory"><a href="/search?cat=207">HD - Movies</a></div>
+                <div class="subcategory"><a href="/search?cat=208">HD - TV Shows</a></div>
+                <div class="subcategory"><a href="/search?cat=209">3D</a></div>
+                <div class="subcategory"><a href="/search?cat=210">UHD/4K - Movies</a></div>
+                <div class="subcategory"><a href="/search?cat=211">UHD/4K - TV Shows</a></div>
+                <div class="subcategory"><a href="/search?cat=212">Other</a></div>
+            </div>
+            <div class="category"><a href="/search?cat=300">Applications</a>
+                <div class="subcategory"><a href="/search?cat=301">Windows</a></div>
+                <div class="subcategory"><a href="/search?cat=302">Mac</a></div>
+                <div class="subcategory"><a href="/search?cat=303">Linux/UNIX</a></div>
+                <div class="subcategory"><a href="/search?cat=304-apps">Handheld</a></div>
+                <div class="subcategory"><a href="/search?cat=305">iOS (iPad/iPhone)</a></div>
+                <div class="subcategory"><a href="/search?cat=306">Android</a></div>
+                <div class="subcategory"><a href="/search?cat=307">Other OS</a></div>
+            </div>
+            <div class="category"><a href="/search?cat=400">Games</a>
+                <div class="subcategory"><a href="/search?cat=401">PC</a></div>
+                <div class="subcategory"><a href="/search?cat=402">Mac</a></div>
+                <div class="subcategory"><a href="/search?cat=403">PSx</a></div>
+                <div class="subcategory"><a href="/search?cat=404">XBOX360</a></div>
+                <div class="subcategory"><a href="/search?cat=405">Wii</a></div>
+                <div class="subcategory"><a href="/search?cat=406">Handheld</a></div>
+                <div class="subcategory"><a href="/search?cat=407">iOS (iPad/iPhone)</a></div>
+                <div class="subcategory"><a href="/search?cat=408">Android</a></div>
+                <div class="subcategory"><a href="/search?cat=409">Other</a></div>
+            </div>
+            <div class="category"><a href="/search?cat=500">Other</a>
+                <div class="subcategory"><a href="/search?cat=501">E-books</a></div>
+                <div class="subcategory"><a href="/search?cat=502">Comics</a></div>
+                <div class="subcategory"><a href="/search?cat=503">Pictures</a></div>
+                <div class="subcategory"><a href="/search?cat=504">Covers</a></div>
+                <div class="subcategory"><a href="/search?cat=505">Other</a></div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Result of Search</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Navbar style */
+        .navbar {
+            background-color: #4c566a;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 40px; /* Logo size */
+        }
+
+        .navbar a {
+            color: #e5e9f0;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search bar styles */
+        #input,
+        #input-button,
+        #cata {
+            border-radius: 10px;
+            height: 40px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-left: 10px; /* Space between links and search bar */
+        }
+
+        #input {
+            width: 300px; /* Width of the search input */
+        }
+
+        #input-button {
+            background-color: #5e81ac;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 80px; /* Button width */
+        }
+
+        #input-button:hover {
+            background-color: #81a1c1;
+        }
+
+        table {
+            width: 70%;
+            border-collapse: collapse;
+            margin: 30px auto;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #4c566a;
+            color: white;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="img"><img src="/favicon.png" id="TPBlogo" alt="The Pirate Bay"></a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About/Privacy Policy</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/catagories">Catagories</a>
+            <a href="/upload">Upload torrent</a>
+            <a href="/announcements">Announcements</a>
+        </nav>
+        <form action="/search" method="get" id="search-form" style="display: flex; align-items: center;">
+            <input type="search" placeholder="Search Torrents" id="input" name="q" aria-label="Search Torrents" required>
+            <select id="cata" name="cat">
+                <option value="100">Audio</option>
+                <option value="101">Music</option>
+                <option value="102">Audio Books</option>
+                <option value="103">Sound Clips</option>
+                <option value="104">FLAC</option>
+                <option value="105">Other Audio</option>
+
+                <option value="200">Video</option>
+                <option value="201">Movies</option>
+                <option value="202">Movies DVDR</option>
+                <option value="203">Music Videos</option>
+                <option value="204">Movie Clips</option>
+                <option value="205">TV Shows</option>
+                <option value="206">Handheld</option>
+                <option value="207">HD - Movies</option>
+                <option value="208">HD - TV Shows</option>
+                <option value="209">3D</option>
+                <option value="210">UHD/4K - Movies</option>
+                <option value="211">UHD/4K - TV Shows</option>
+                <option value="212">Other Video</option>
+
+                <option value="300">Applications</option>
+                <option value="301">Windows</option>
+                <option value="302">Mac</option>
+                <option value="303">Linux/UNIX</option>
+                <option value="304">Handheld</option>
+                <option value="305">iOS (iPad/iPhone)</option>
+                <option value="306">Android</option>
+                <option value="307">Other OS</option>
+
+                <option value="400">Games</option>
+                <option value="401">PC</option>
+                <option value="402">Mac</option>
+                <option value="403">PSx</option>
+                <option value="404">XBOX360</option>
+                <option value="405">Wii</option>
+                <option value="406">Handheld</option>
+                <option value="407">iOS (iPad/iPhone)</option>
+                <option value="408">Android</option>
+                <option value="409">Other Games</option>
+
+                <option value="500">Other</option>
+                <option value="501">E-books</option>
+                <option value="502">Comics</option>
+                <option value="503">Pictures</option>
+                <option value="504">Covers</option>
+                <option value="505">Other</option>
+            </select>
+            <button type="submit" id="input-button">Search!</button>
+        </form>
+    </header>
+
+    <main>
+        {{if .}}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Catagories</th>
+                        <th>Name</th>
+                        <th>Uploaded</th>
+                        <th>Download Magnet</th>
+                        <th>Uploaded By</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {{ range . }}
+                        <tr>
+                            {{ if eq .Cat 100 }}
+                                <td>Audio</td>
+                            {{ else if eq .Cat 101 }}
+                                <td>Music</td>
+                            {{ else if eq .Cat 102 }}
+                                <td>Audio Books</td>
+                            {{ else if eq .Cat 103 }}
+                                <td>Sound Clips</td>
+                            {{ else if eq .Cat 104 }}
+                                <td>FLAC</td>
+                            {{ else if eq .Cat 105 }}
+                                <td>Other Audio</td>
+                            {{ else if eq .Cat 200 }}
+                                <td>Video</td>
+                            {{ else if eq .Cat 201 }}
+                                <td>Movies</td>
+                            {{ else if eq .Cat 202 }}
+                                <td>Movies DVDR</td>
+                            {{ else if eq .Cat 203 }}
+                                <td>Music Videos</td>
+                            {{ else if eq .Cat 204 }}
+                                <td>Movie Clips</td>
+                            {{ else if eq .Cat 205 }}
+                                <td>TV Shows</td>
+                            {{ else if eq .Cat 206 }}
+                                <td>Handheld</td>
+                            {{ else if eq .Cat 207 }}
+                                <td>HD - Movies</td>
+                            {{ else if eq .Cat 208 }}
+                                <td>HD - TV Shows</td>
+                            {{ else if eq .Cat 209 }}
+                                <td>3D</td>
+                            {{ else if eq .Cat 210 }}
+                                <td>UHD/4K - Movies</td>
+                            {{ else if eq .Cat 211 }}
+                                <td>UHD/4K - TV Shows</td>
+                            {{ else if eq .Cat 212 }}
+                                <td>Other Video</td>
+                            {{ else if eq .Cat 300 }}
+                                <td>Applications</td>
+                            {{ else if eq .Cat 301 }}
+                                <td>Windows</td>
+                            {{ else if eq .Cat 302 }}
+                                <td>Mac</td>
+                            {{ else if eq .Cat 303 }}
+                                <td>Linux/UNIX</td>
+                            {{ else if eq .Cat 304 }}
+                                <td>Handheld</td>
+                            {{ else if eq .Cat 305 }}
+                                <td>iOS (iPad/iPhone)</td>
+                            {{ else if eq .Cat 306 }}
+                                <td>Android</td>
+                            {{ else if eq .Cat 307 }}
+                                <td>Other OS</td>
+                            {{ else if eq .Cat 400 }}
+                                <td>Games</td>
+                            {{ else if eq .Cat 401 }}
+                                <td>PC</td>
+                            {{ else if eq .Cat 402 }}
+                                <td>Mac</td>
+                            {{ else if eq .Cat 403 }}
+                                <td>PSx</td>
+                            {{ else if eq .Cat 404 }}
+                                <td>XBOX360</td>
+                            {{ else if eq .Cat 405 }}
+                                <td>Wii</td>
+                            {{ else if eq .Cat 406 }}
+                                <td>Handheld</td>
+                            {{ else if eq .Cat 407 }}
+                                <td>iOS (iPad/iPhone)</td>
+                            {{ else if eq .Cat 408 }}
+                                <td>Android</td>
+                            {{ else if eq .Cat 409 }}
+                                <td>Other Games</td>
+                            {{ else if eq .Cat 500 }}
+                                <td>Other</td>
+                            {{ else if eq .Cat 501 }}
+                                <td>E-books</td>
+                            {{ else if eq .Cat 502 }}
+                                <td>Comics</td>
+                            {{ else if eq .Cat 503 }}
+                                <td>Pictures</td>
+                            {{ else if eq .Cat 504 }}
+                                <td>Covers</td>
+                            {{ else if eq .Cat 505 }}
+                                <td>Other</td>
+                            {{ else }}
+                                <td>Error</td>
+                            {{ end }}
+                            
+                            <td><a href="/detail?tid={{ .Tid }}">{{ .Name }}</a></td>
+                            <td>{{ .UploadTime }}</td>
+                            <td><a href="{{ .Link }}" target="_blank" rel="noopener noreferrer">Download</a></td>
+                            {{if eq .Uid -1}}
+                                <td>Anonymous</td>
+                            {{else}}
+                                <td><a href="/detail?uid={{.Uid}}">{{ .Uname }}</a></td> 
+                            {{end}}
+                        </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        {{else}}
+            <h1 style="text-align: center;">No search resaults</h1>
+        {{end}}
+    </main>
+
+</body>
+
+</html>

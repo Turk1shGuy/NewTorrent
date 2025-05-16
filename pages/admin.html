@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <style>
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: #2e3d49;
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: #3b82f6;
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        a:hover {
+            color: #2563eb;
+        }
+
+        /* Updated Navbar Styles (new style based on your second example) */
+        .navbar {
+            background-color: #4c566a;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+
+        .navbar img {
+            height: 40px;
+            /* Adjusted logo size */
+        }
+
+        .navbar nav a {
+            color: #e5e9f0;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+        }
+
+        .navbar nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search Bar Styles in Navbar */
+        #search-form {
+            display: flex;
+            align-items: center;
+        }
+
+        #search-form input[type="search"],
+        #search-form select {
+            border-radius: 10px;
+            height: 40px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-left: 10px;
+            font-size: 16px;
+        }
+
+        #search-form input[type="search"] {
+            width: 300px;
+            /* Width of the search input */
+        }
+
+        #search-form button {
+            border-radius: 10px;
+            height: 40px;
+            padding: 5px;
+            border: none;
+            background-color: #5e81ac;
+            color: white;
+            cursor: pointer;
+            margin-left: 10px;
+            width: 80px;
+            /* Button width */
+            transition: background-color 0.2s ease;
+        }
+
+        #search-form button:hover {
+            background-color: #81a1c1;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #e0e7ee;
+        }
+
+        th {
+            background-color: #4c566a;
+            color: #fff;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            font-size: 14px;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        .action-btn {
+            padding: 8px 15px;
+            font-size: 14px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e3342f;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .action-btn:hover {
+            background-color: #cc1f1a;
+        }
+
+        /* Email Form */
+        .form-container {
+            max-width: 900px;
+            margin: 0 auto 40px auto;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #2e3d49;
+        }
+
+        .form-container input[type="text"],
+        .form-container textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #ccd0d5;
+            border-radius: 5px;
+            font-size: 16px;
+            resize: none;
+        }
+
+        .form-container button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #5e81ac;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .form-container button:hover {
+            background-color: #81a1c1;
+        }
+
+        /* Section Titles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 10px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .navbar nav {
+                margin: 10px 0;
+            }
+
+            #search-form {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            #search-form input[type="search"],
+            #search-form select,
+            #search-form button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            table,
+            .form-container {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Updated Navbar -->
+    <header class="navbar">
+        <a href="/" class="logo">
+            <img src="/favicon.png" alt="Logo" />
+        </a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About/Privacy Policy</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/catagories">Catagories</a>
+            <a href="/upload">Upload torrent</a>
+            <a href="/search">Search</a>
+            <a href="/announcements">Announcements</a>
+        </nav>
+        <form action="/search" method="get" id="search-form">
+            <input type="search" name="q" placeholder="Search Torrents" aria-label="Search Torrents" required />
+            <select name="cat">
+                <option value="" disabled selected>Categories</option>
+                <option value="100">Audio</option>
+                <option value="101">Music</option>
+                <option value="102">Audio Books</option>
+                <option value="103">Sound Clips</option>
+                <option value="104">FLAC</option>
+                <option value="105">Other Audio</option>
+
+                <option value="200">Video</option>
+                <option value="201">Movies</option>
+                <option value="202">Movies DVDR</option>
+                <option value="203">Music Videos</option>
+                <option value="204">Movie Clips</option>
+                <option value="205">TV Shows</option>
+                <option value="206">Handheld</option>
+                <option value="207">HD - Movies</option>
+                <option value="208">HD - TV Shows</option>
+                <option value="209">3D</option>
+                <option value="210">UHD/4K - Movies</option>
+                <option value="211">UHD/4K - TV Shows</option>
+                <option value="212">Other Video</option>
+
+                <option value="300">Applications</option>
+                <option value="301">Windows</option>
+                <option value="302">Mac</option>
+                <option value="303">Linux/UNIX</option>
+                <option value="304">Handheld</option>
+                <option value="305">iOS (iPad/iPhone)</option>
+                <option value="306">Android</option>
+                <option value="307">Other OS</option>
+
+                <option value="400">Games</option>
+                <option value="401">PC</option>
+                <option value="402">Mac</option>
+                <option value="403">PSx</option>
+                <option value="404">XBOX360</option>
+                <option value="405">Wii</option>
+                <option value="406">Handheld</option>
+                <option value="407">iOS (iPad/iPhone)</option>
+                <option value="408">Android</option>
+                <option value="409">Other Games</option>
+
+                <option value="500">Other</option>
+                <option value="501">E-books</option>
+                <option value="502">Comics</option>
+                <option value="503">Pictures</option>
+                <option value="504">Covers</option>
+                <option value="505">Other</option>
+            </select>
+            <button type="submit">Search!</button>
+        </form>
+    </header>
+
+    <section id="users">
+        <h2 class="section-title">Manage Users</h2>
+        <table aria-label="User Management Table">
+            <thead>
+                <tr>
+                    <th>User ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{if .}}
+                {{range .}}
+                <tr>
+                    <td>{{.Uid}}</td>
+                    <td>{{.Uname}}</td>
+                    <td>{{.Email}}</td>
+                    <form action="/deleteuser" method="post">
+                        <input type="hidden" name="uid" value="{{.Uid}}">
+                        <td><button class="action-btn" type="submit">Delete</button></td>
+                    </form>
+                </tr>
+                {{end}}
+                {{end}}
+            </tbody>
+        </table>
+    </section>
+
+    <section id="emails">
+        <h2 class="section-title">Manage Emails</h2>
+        <div class="form-container">
+            <form action="/sendmail" method="post">
+                <label for="subject">Subject:</label>
+                <input type="text" id="subject" name="subject" placeholder="Enter email subject" required><br><br>
+
+                <label for="body">Body:</label>
+                <textarea id="body" name="body" rows="5" placeholder="Enter email message" required></textarea><br><br>
+
+                <button type="submit">Send Email</button>
+            </form>
+        </div>
+    </section>
+
+
+    <section id="announcements">
+        <h2 class="section-title">Make an Announcement</h2>
+        <div class="form-container">
+            <form action="/makeannouncements" method="post">
+                <label for="announcement-text">Announcement Text:</label>
+                <textarea id="announcement-text" name="text" required></textarea>
+                <button type="submit">Post Announcement</button>
+            </form>
+        </div>
+    </section>
+
+
+</body>
+
+</html>

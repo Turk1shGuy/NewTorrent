@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="icon" href="/favicon.png" type="image/png">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        #register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #email,
+        #uname,
+        #lan,
+        #password,
+        #register-button {
+            border-radius: 10px;
+            width: 350px;
+            height: 40px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+        }
+
+        #register-button {
+            background-color: #5e81ac;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #register-button:hover {
+            background-color: #81a1c1;
+        }
+
+        .register-div {
+            margin: 10%;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            /* Center the content */
+        }
+
+        img {
+            height: 200px;
+            margin-bottom: 20px;
+            /* Add some space below the image */
+        }
+
+        #warn {
+            color: #d8dee9;
+            background-color: #bf616a;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="register-div">
+        <label style="font-size: 35px;">Register to The System</label><br>
+        <img src="/favicon.png" alt="Site Logo"><br>
+
+        <form action="/register" method="post" id="register-form">
+            <input type="email" placeholder="E-Mail" id="email" name="email" aria-label="email" required>
+            <input type="text" placeholder="Username" id="uname" name="uname" aria-label="username" required>
+            <input type="password" placeholder="Password" id="password" name="password" aria-label="Password" required>
+            <select id="lan" name="lan" aria-label="language">
+                <option value="" disabled selected>Language</option>
+                <option value="TR">Turkish</option>
+                <option value="AZ">Azerbaijani</option>
+                <option value="EN">English</option>
+            </select>
+            <button type="submit" id="register-button">Register</button>
+        </form>
+
+        <p id="warn">E-Mail already registered</p>
+    </div>
+</body>
+
+</html>

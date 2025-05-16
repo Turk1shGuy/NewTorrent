@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Torrent Detail</title>
+    <style>
+        /* Base styles */
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            padding: 20px;
+            color: #333;
+        }
+
+        a {
+            color: #5e81ac;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navbar styles */
+        header.navbar {
+            background-color: #4c566a;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header.navbar img {
+            height: 40px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: #e5e9f0;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #d8dee9;
+        }
+
+        /* Search form styles */
+        #search-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        #search-form input[type="search"] {
+            width: 250px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+
+        #search-form select {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+            background-color: #fff;
+        }
+
+        #search-form button {
+            background-color: #5e81ac;
+            color: #fff;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        #search-form button:hover {
+            background-color: #81a1c1;
+        }
+
+        /* Main detail styles */
+        main {
+            max-width: 70%;
+            margin: 30px auto;
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .torrent-meta p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #555;
+        }
+
+        #desc {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin: 20px 0;
+            font-size: 16px;
+        }
+
+        /* Comments section */
+        .comments {
+            margin-top: 40px;
+        }
+
+        .comments h2 {
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .comment {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            font-size: 15px;
+        }
+
+        .comment time {
+            font-size: 13px;
+            color: #888;
+        }
+
+        /* Comment form styles */
+        form#commentForm {
+            margin-top: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        form#commentForm label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        form#commentForm input[type="text"],
+        form#commentForm textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+            resize: none;
+        }
+
+        form#commentForm input[type="text"]:focus,
+        form#commentForm textarea:focus {
+            border-color: #5e81ac;
+            outline: none;
+        }
+
+        form#commentForm button {
+            background-color: #5e81ac;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        form#commentForm button:hover {
+            background-color: #4c6b8a;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            #search-form {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            #search-form input[type="search"],
+            #search-form select {
+                width: 100%;
+            }
+
+            main {
+                margin: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="logo"><img src="/favicon.png" alt="The Pirate Bay Logo"></a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About/Privacy Policy</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/catagories">Catagories</a>
+            <a href="/upload">Upload torrent</a>
+            <a href="/search">Search</a>
+            <a href="/announcements">Announcements</a>
+        </nav>
+        <form id="search-form" action="/search" method="get">
+            <input type="search" name="q" placeholder="Search Torrents" aria-label="Search Torrents" required>
+            <select name="cat">
+                <option value="" disabled selected>Categories</option>
+                <option value="100">Audio</option>
+                <option value="101">Music</option>
+                <option value="102">Audio Books</option>
+                <option value="103">Sound Clips</option>
+                <option value="104">FLAC</option>
+                <option value="105">Other Audio</option>
+
+                <option value="200">Video</option>
+                <option value="201">Movies</option>
+                <option value="202">Movies DVDR</option>
+                <option value="203">Music Videos</option>
+                <option value="204">Movie Clips</option>
+                <option value="205">TV Shows</option>
+                <option value="206">Handheld</option>
+                <option value="207">HD - Movies</option>
+                <option value="208">HD - TV Shows</option>
+                <option value="209">3D</option>
+                <option value="210">UHD/4K - Movies</option>
+                <option value="211">UHD/4K - TV Shows</option>
+                <option value="212">Other Video</option>
+
+                <option value="300">Applications</option>
+                <option value="301">Windows</option>
+                <option value="302">Mac</option>
+                <option value="303">Linux/UNIX</option>
+                <option value="304">Handheld</option>
+                <option value="305">iOS (iPad/iPhone)</option>
+                <option value="306">Android</option>
+                <option value="307">Other OS</option>
+
+                <option value="400">Games</option>
+                <option value="401">PC</option>
+                <option value="402">Mac</option>
+                <option value="403">PSx</option>
+                <option value="404">XBOX360</option>
+                <option value="405">Wii</option>
+                <option value="406">Handheld</option>
+                <option value="407">iOS (iPad/iPhone)</option>
+                <option value="408">Android</option>
+                <option value="409">Other Games</option>
+
+                <option value="500">Other</option>
+                <option value="501">E-books</option>
+                <option value="502">Comics</option>
+                <option value="503">Pictures</option>
+                <option value="504">Covers</option>
+                <option value="505">Other</option>
+            </select>
+            <button type="submit">Search!</button>
+        </form>
+    </header>
+
+    <main>
+        {{ if . }}
+            <section class="torrent-detail">
+                <h1>{{ .Name }}</h1>
+                <div class="torrent-meta">
+                    {{if eq .Uid -1}}
+                        <p>ID: ANONYMOUS</p>
+                    {{else}}
+                        <p>ID: <a href="/detail?uid={{ .Uid }}">{{ .Uid }}</a></p>
+                    {{end}}
+                    <p>Category:
+                        {{ if eq .Cat 100 }}
+                            Audio
+                        {{ else if eq .Cat 200 }}
+                            Video
+                        {{ else if eq .Cat 300 }}
+                            Application
+                        {{ else if eq .Cat 400 }}
+                            Games
+                        {{ else if eq .Cat 500 }}
+                            Other
+                        {{ else }}
+                            Error
+                        {{ end }}
+                    </p>
+                </div>
+                <p>Magnet link: <a href="{{ .Link }}">Download</a></p>
+                <div id="desc">
+                    {{ .Desc }}
+                </div>
+            </section>
+
+            <section class="comments">
+                <h2>Comments</h2>
+                <!-- Existing comments -->
+                {{ if .Comments }}
+                    {{ range .Comments }}
+                        <div class="comment">
+                            <p><strong>{{ .Uname }}</strong> &mdash; <time datetime="{{ .UploadTime }}">{{ .UploadTime }}</time></p>
+                            <p>{{ .Comment }}</p>
+                        </div>
+                    {{ end }}
+                {{ else }}
+                    <p>No comments yet. Be the first to leave a comment!</p>
+                {{ end }}
+
+                <!-- Comment Form -->
+                <form id="commentForm" action="/makecomment?tid={{ .Tid }}" method="post">
+                    <label for="comment">Your Comment</label>
+                    <textarea id="comment" name="comment" rows="4" placeholder="Write your comment here..." required></textarea>
+                    <button type="submit">Submit Comment</button>
+                </form>
+            </section>
+            {{ else }}
+                <h1>Not Found</h1>
+        {{ end }}
+    </main>
+</body>
+
+</html>

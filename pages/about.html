@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f9f9f9;
+        }
+
+        h1, h2, h3 {
+            color: #4c566a;
+        }
+
+        p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        a {
+            color: #5e81ac;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Navbar style */
+        .navbar {
+            background-color: #4c566a;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar img {
+            height: 40px; /* Logo size */
+        }
+
+        .navbar a {
+            color: #e5e9f0;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        .navbar a:hover {
+            text-decoration: underline;
+        }
+
+        /* Search bar styles */
+        #input,
+        #input-button,
+        #cata {
+            border-radius: 10px;
+            height: 40px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            margin-left: 10px; /* Space between links and search bar */
+        }
+
+        #input {
+            width: 300px; /* Width of the search input */
+        }
+
+        #input-button {
+            background-color: #5e81ac;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 80px; /* Button width */
+        }
+
+        #input-button:hover {
+            background-color: #81a1c1;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="navbar">
+        <a href="/" class="img"><img src="/favicon.png" id="TPBlogo" alt="The Pirate Bay"></a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/about">About/Privacy Policy</a>
+            <a href="/login">Login</a>
+            <a href="/register">Register</a>
+            <a href="/catagories">Catagories</a>
+            <a href="/upload">Upload torrent</a>
+            <a href="/search">Search</a>
+            <a href="/announcements">Announcements</a>
+        </nav>
+        <form action="/search" method="get" id="search-form" style="display: flex; align-items: center;">
+            <input type="search" placeholder="Search Torrents" id="input" name="q" aria-label="Search Torrents" required>
+            <select id="cata" name="cat">
+                <option value="" disabled selected>Catagories</option>
+                <option value="100">Audio</option>
+                <option value="101">Music</option>
+                <option value="102">Audio Books</option>
+                <option value="103">Sound Clips</option>
+                <option value="104">FLAC</option>
+                <option value="105">Other Audio</option>
+
+                <option value="200">Video</option>
+                <option value="201">Movies</option>
+                <option value="202">Movies DVDR</option>
+                <option value="203">Music Videos</option>
+                <option value="204">Movie Clips</option>
+                <option value="205">TV Shows</option>
+                <option value="206">Handheld</option>
+                <option value="207">HD - Movies</option>
+                <option value="208">HD - TV Shows</option>
+                <option value="209">3D</option>
+                <option value="210">UHD/4K - Movies</option>
+                <option value="211">UHD/4K - TV Shows</option>
+                <option value="212">Other Video</option>
+
+                <option value="300">Applications</option>
+                <option value="301">Windows</option>
+                <option value="302">Mac</option>
+                <option value="303">Linux/UNIX</option>
+                <option value="304">Handheld</option>
+                <option value="305">iOS (iPad/iPhone)</option>
+                <option value="306">Android</option>
+                <option value="307">Other OS</option>
+
+                <option value="400">Games</option>
+                <option value="401">PC</option>
+                <option value="402">Mac</option>
+                <option value="403">PSx</option>
+                <option value="404">XBOX360</option>
+                <option value="405">Wii</option>
+                <option value="406">Handheld</option>
+                <option value="407">iOS (iPad/iPhone)</option>
+                <option value="408">Android</option>
+                <option value="409">Other Games</option>
+
+                <option value="500">Other</option>
+                <option value="501">E-books</option>
+                <option value="502">Comics</option>
+                <option value="503">Pictures</option>
+                <option value="504">Covers</option>
+                <option value="505">Other</option>
+            </select>
+            <button type="submit" id="input-button">Search!</button>
+        </form>
+    </header>
+
+    <main>
+        <h1 style="font-size: 50px;">Privacy Policy</h1>
+        <p>Last updated: [Insert Date]</p>
+
+        <h2>Information We Collect</h2>
+        <p>
+            To enhance your experience on our site, we automatically collect the following information during your visit:
+        </p>
+        <ul>
+            <li>Your IP Address</li>
+            <li>Time of Visit</li>
+            <li>HTTP Request Method (e.g., GET, POST)</li>
+            <li>Request Path</li>
+            <li>Browser Details and Version (User Agent)</li>
+            <li>Device and Operating System Details</li>
+            <li>Estimated Geolocation (IP-based)</li>
+            <li>Username used during Login/Registration/Logout</li>
+            <li>Hashed credentials created during login/registration</li>
+            <li>Date and Time of Login/Registration/Logout</li>
+        </ul>
+        
+        <p>The login and registration details, including usernames and hash values, are temporarily stored in log files. These log files are used solely for enhancing security and preventing fraudulent activities.</p>
+        <p>However, any information recorded in our user database is stored permanently. Under no circumstances are user account details eligible to be permanently deleted, even by administrators. This permanent retention of user data is enforced strictly to ensure system security and service continuity.</p>        
+        <p>This information is reset every 2 days.</p>
+
+        <h2>User Responsibility</h2>
+        <p>Users are responsible for the torrents they upload. All uploaded torrents are governed by the laws of the country where the user is located. Please be aware that any uploaded torrent on the site cannot be deleted, including by administrators.</p>
+
+        <h2>Data Security</h2>
+        <p>We take reasonable measures to protect your information. However, no method of transmission over the internet or method of electronic storage is 100% secure.</p>
+
+        <h2>Changes to This Privacy Policy</h2>
+        <p>We may update our privacy policy from time to time. We will notify you of any changes by posting the new privacy policy on this page. You are advised to review this privacy policy periodically for any changes.</p>
+
+        <h2>Contact Us</h2>
+        <p>If you have any questions about this privacy policy, please contact us at [Insert Contact Information].</p>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+User-agent: *
+Disallow: /
+
+User-agent: Googlebot
+Allow: /upload
+Allow: /
+Allow: /about
+Allow: /login
+Allow: /register
+Allow: /catagories
+Allow: /search
+Allow: /announcements
+
+User-agent: Yandex
+Allow: /upload
+Allow: /
+Allow: /about
+Allow: /login
+Allow: /register
+Allow: /catagories
+Allow: /search
+Allow: /announcements
+
+User-agent: Bingbot
+Allow: /upload
+Allow: /
+Allow: /about
+Allow: /login
+Allow: /register
+Allow: /catagories
+Allow: /search
+Allow: /announcements
+
+User-agent: DuckDuckGo
+Allow: /upload
+Allow: /
+Allow: /about
+Allow: /login
+Allow: /register
+Allow: /catagories
+Allow: /search
+Allow: /announcements
